@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "configmap.fullname" . }}
+data:
+  #redis: "redis-svc"
+  redis: {{ include "redis.fullname" . }}
+  MY_KEY: "Hello from Helm"
+  foo: bar
+

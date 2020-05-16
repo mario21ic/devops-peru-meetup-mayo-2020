@@ -1,0 +1,44 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: counter-app
+spec:
+  selector:
+    matchLabels:
+      app: counter-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: counter-app
+    spec:
+      containers:
+      - name: counter-app
+        image: "mario21ic/devopsperu:1.1"
+        envFrom: # Configmap
+          - configMapRef:
+              name: my-cm # debe ser igual que configmap.yaml linea 4
+        ports:
+          - containerPort: 8080   # http
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: "redis:alpine"
+        ports:
+          - containerPort: 6379 # redis port

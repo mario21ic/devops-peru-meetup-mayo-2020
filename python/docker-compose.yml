@@ -1,0 +1,23 @@
+version: '2.3'
+
+services:
+
+  counter:
+    image: mario21ic/devopsperu:1.0 # demo 1
+    #image: mario21ic/devopsperu:1.1 # demo 2
+    #image: mario21ic/devopsperu:1.2 #demo online
+    build: ./
+    environment:
+      - redis="redis" # Debe ser el mismo de la linea 19
+      - MY_KEY="Hello from Docker Compose"
+      - foo="bar"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379"
+ 

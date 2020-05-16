@@ -1,0 +1,22 @@
+replicaCount: 1
+
+image:
+  repository: mario21ic/devopsperu
+  #repository: nginx
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+service:
+  type: NodePort
+  #type: LoadBalancer
+  port: 8080
+
+#resources: {}
+#resources:
+#  limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi

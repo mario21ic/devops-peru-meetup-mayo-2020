@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-cm
+data:
+  redis: "redis-svc" # debe ser igual que service.yml linea 6
+  MY_KEY: "Hello from k8s"
+  foo: bar
+

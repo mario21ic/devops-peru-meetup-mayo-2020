@@ -65,7 +65,7 @@ helm install demo2 --set service.type="LoadBalancer" --set replicaCount=2 ./helm
 
 Abrir la app y revisar que tiene el contador en 1, ademas dar varias veces f5 para verificar que es otro contador:
 ```
-minikube service demo1-mycounter-counter-svc
+minikube service demo2-mycounter-counter-svc
 ```
 
 Revisar el status de los recursos
@@ -81,7 +81,7 @@ helm upgrade demo2 ./helm/
 
 Abrir la app para verificar que ahora imprime la version 1.2
 ```
-minikube service demo1-mycounter-counter-svc
+minikube service demo2-mycounter-counter-svc
 ```
 
 Rollback del release demo2 a una revision especifica

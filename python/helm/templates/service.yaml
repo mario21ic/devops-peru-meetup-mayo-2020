@@ -24,25 +24,8 @@ metadata:
     {{- include "counter.labels" . | nindent 4 }}
 spec:
   #type: NodePort
+  #type: LoadBalancer
   type: {{ .Values.service.type }}
-  ports:
-    - name: http
-      port: 8080
-      targetPort: 8080
-      protocol: TCP
-  selector:
-    {{- include "counter.selectorLabels" . | nindent 4 }}
----
-
-# Load Balancer
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include "counter.fullname" . }}-lb
-  labels:
-    {{- include "counter.labels" . | nindent 4 }}
-spec:
-  type: LoadBalancer
   ports:
     - name: http
       port: 8080
